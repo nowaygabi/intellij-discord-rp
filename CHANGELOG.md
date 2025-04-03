@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.8.0] - 2025-04-03
+
+### Added
+
+- File icon style button
+    - Includes default and vscord icon styles
+
 ## [1.7.4] - 2025-03-10
 
 ### Fixed
@@ -26,7 +33,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Previous repository button functionality has now been replaced with a new one that allows you to customize the button for each project
+- Previous repository button functionality has now been replaced with a new one that allows you to customize the button
+  for each project
 
 ## [1.7.1] - 2025-01-05
 
@@ -40,8 +48,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - 'View Repository' button in Rich Presence that links to the project's Git repository
 
-  - Can be configured in settings
-  - Can be hidden per project using 'Show Repository Button in Project' action
+    - Can be configured in settings
+    - Can be hidden per project using 'Show Repository Button in Project' action
 - Setting for specifying if elapsed time should be for the whole applcation, for each project or for each file
 - `{project_repo_url}` variable that shows the URL of the project's Git repository
 - `{file_size}` variable that shows the size of the edited file
@@ -136,11 +144,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- File types for Ruby, F#, Shell scripts, Batch scripts, SQL, Visual Basic, Prisma schema, HTTP request files, license files
+- File types for Ruby, F#, Shell scripts, Batch scripts, SQL, Visual Basic, Prisma schema, HTTP request files, license
+  files
 
 ### Changed
 
-- Redesigned icons for Java, JSON, XML, SQL, Visual Basic, Image files 
+- Redesigned icons for Java, JSON, XML, SQL, Visual Basic, Image files
 - Updated KPresence to 0.6.2
 
 ## [1.3.2] - 2024-05-21
@@ -153,13 +162,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Rich Presence doesn't update when text field is formatted with a variable that has a value of length 1 character (fixes C files not displaying)
+- Rich Presence doesn't update when text field is formatted with a variable that has a value of length 1 character (
+  fixes C files not displaying)
 
 ## [1.3.0] - 2024-05-09
 
 ### Added
 
-- File types for Svelte, Nuxt config (`nuxt.config.ts`), NPM package (`package.json`, `package-lock.json`), TypeScript config (`tsconfig.json`)
+- File types for Svelte, Nuxt config (`nuxt.config.ts`), NPM package (`package.json`, `package-lock.json`), TypeScript
+  config (`tsconfig.json`)
 
 ### Changed
 
@@ -210,7 +221,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support for remaining JetBrains IDEs
 - Setting for changing display mode per project (Tools -> Discord Rich Presence -> Change Display Mode in Project)
 
-  - The default value can be configured in global settings
+    - The default value can be configured in global settings
 - Added application display mode
 
 ### Changed
@@ -243,27 +254,53 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Initial release
 
 [Unreleased]: https://github.com/pandier/intellij-discord-rp/compare/v1.7.4...HEAD
+
+[1.8.0]: https://github.com/nowaygabi/intellij-discord-rp/compare/v1.7.4...v1.8.0
+
 [1.7.4]: https://github.com/pandier/intellij-discord-rp/compare/v1.7.3...v1.7.4
+
 [1.7.3]: https://github.com/pandier/intellij-discord-rp/compare/v1.7.2...v1.7.3
+
 [1.7.2]: https://github.com/pandier/intellij-discord-rp/compare/v1.7.1...v1.7.2
+
 [1.7.1]: https://github.com/pandier/intellij-discord-rp/compare/v1.7.0...v1.7.1
+
 [1.7.0]: https://github.com/pandier/intellij-discord-rp/compare/v1.6.2...v1.7.0
+
 [1.6.2]: https://github.com/pandier/intellij-discord-rp/compare/v1.6.1...v1.6.2
+
 [1.6.1]: https://github.com/pandier/intellij-discord-rp/compare/v1.6.0...v1.6.1
+
 [1.6.0]: https://github.com/pandier/intellij-discord-rp/compare/v1.5.1...v1.6.0
+
 [1.5.1]: https://github.com/pandier/intellij-discord-rp/compare/v1.5.0...v1.5.1
+
 [1.5.0]: https://github.com/pandier/intellij-discord-rp/compare/v1.4.3...v1.5.0
+
 [1.4.3]: https://github.com/pandier/intellij-discord-rp/compare/v1.4.2...v1.4.3
+
 [1.4.2]: https://github.com/pandier/intellij-discord-rp/compare/v1.4.1...v1.4.2
+
 [1.4.1]: https://github.com/pandier/intellij-discord-rp/compare/v1.4.0...v1.4.1
+
 [1.4.0]: https://github.com/pandier/intellij-discord-rp/compare/v1.3.2...v1.4.0
+
 [1.3.2]: https://github.com/pandier/intellij-discord-rp/compare/v1.3.1...v1.3.2
+
 [1.3.1]: https://github.com/pandier/intellij-discord-rp/compare/v1.3.0...v1.3.1
+
 [1.3.0]: https://github.com/pandier/intellij-discord-rp/compare/v1.2.1...v1.3.0
+
 [1.2.1]: https://github.com/pandier/intellij-discord-rp/compare/v1.2.0...v1.2.1
+
 [1.2.0]: https://github.com/pandier/intellij-discord-rp/compare/v1.1.1...v1.2.0
+
 [1.1.1]: https://github.com/pandier/intellij-discord-rp/compare/v1.1.0...v1.1.1
+
 [1.1.0]: https://github.com/pandier/intellij-discord-rp/compare/v1.0.2...v1.1.0
+
 [1.0.2]: https://github.com/pandier/intellij-discord-rp/compare/v1.0.1...v1.0.2
+
 [1.0.1]: https://github.com/pandier/intellij-discord-rp/compare/v1.0.0...v1.0.1
+
 [1.0.0]: https://github.com/pandier/intellij-discord-rp/commits/v1.0.0
