@@ -126,8 +126,10 @@ class DiscordSettingsConfigurable : DslConfigurable("Discord Rich Presence") {
                 checkBox("Show full application name with edition in title")
                     .bindSelected(state::showFullApplicationName)
                     .gap(RightGap.SMALL)
-                contextHelp("Title is located in the Rich Presence at the top or in your Discord status. " +
-                        "Use a custom Discord application id if you want to fully adjust the title.")
+                contextHelp(
+                    "Title is located in the Rich Presence at the top or in your Discord status. " +
+                            "Use a custom Discord application id if you want to fully adjust the title."
+                )
             }
         }
 
@@ -164,6 +166,15 @@ class DiscordSettingsConfigurable : DslConfigurable("Discord Rich Presence") {
                 .gap(RightGap.SMALL)
             contextHelp("Recently JetBrains has redesigned their IDE logos. You can switch between the old (classic) design and the new (modern) one.")
         }
+        
+        row {
+            label("File logo style:")
+                .gap(RightGap.SMALL)
+            comboBox(FileStyleSetting.values().toList())
+                .bindItem(state::fileStyle.toNullableProperty())
+                .gap(RightGap.SMALL)
+            contextHelp("Recently JetBrains has redesigned their IDE logos. You can switch between the old (classic) design and the new (modern) one.")
+        }
 
         row {
             label("Default display mode:")
@@ -193,7 +204,10 @@ class DiscordSettingsConfigurable : DslConfigurable("Discord Rich Presence") {
                 displayModeTab(
                     displayMode = ActivityDisplayMode.PROJECT,
                     imageSettings = listOf(ImageSetting.APPLICATION),
-                    timestampTargetSettings = listOf(TimestampTargetSetting.APPLICATION, TimestampTargetSetting.PROJECT),
+                    timestampTargetSettings = listOf(
+                        TimestampTargetSetting.APPLICATION,
+                        TimestampTargetSetting.PROJECT
+                    ),
                     details = state::projectDetails,
                     state = state::projectState,
                     largeImage = state::projectLargeImage,
@@ -209,7 +223,11 @@ class DiscordSettingsConfigurable : DslConfigurable("Discord Rich Presence") {
                 displayModeTab(
                     displayMode = ActivityDisplayMode.FILE,
                     imageSettings = listOf(ImageSetting.APPLICATION, ImageSetting.FILE),
-                    timestampTargetSettings = listOf(TimestampTargetSetting.APPLICATION, TimestampTargetSetting.PROJECT, TimestampTargetSetting.FILE),
+                    timestampTargetSettings = listOf(
+                        TimestampTargetSetting.APPLICATION,
+                        TimestampTargetSetting.PROJECT,
+                        TimestampTargetSetting.FILE
+                    ),
                     details = state::fileDetails,
                     state = state::fileState,
                     largeImage = state::fileLargeImage,

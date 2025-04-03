@@ -1,5 +1,6 @@
 package io.github.pandier.intellijdiscordrp.activity
 
+import io.github.pandier.intellijdiscordrp.settings.FileStyleSetting
 import io.github.pandier.intellijdiscordrp.settings.ImageSetting
 import io.github.pandier.intellijdiscordrp.settings.LogoStyleSetting
 import io.github.pandier.intellijdiscordrp.settings.TimestampTargetSetting
@@ -8,13 +9,18 @@ import io.github.vyfor.kpresence.rpc.Activity
 import io.github.vyfor.kpresence.rpc.activity
 import java.time.Instant
 
-private fun ImageSetting.getIcon(context: ActivityContext, logoStyle: LogoStyleSetting) = when (this) {
-    ImageSetting.APPLICATION -> when (logoStyle) {
-        LogoStyleSetting.MODERN -> currentActivityApplicationType.modernIcon
-        LogoStyleSetting.CLASSIC -> currentActivityApplicationType.classicIcon
+private fun ImageSetting.getIcon(context: ActivityContext, logoStyle: LogoStyleSetting, fileStyle: FileStyleSetting) =
+    when (this) {
+        ImageSetting.APPLICATION -> when (logoStyle) {
+            LogoStyleSetting.MODERN -> currentActivityApplicationType.modernIcon
+            LogoStyleSetting.CLASSIC -> currentActivityApplicationType.classicIcon
+        }
+
+        ImageSetting.FILE -> when (fileStyle) {
+            FileStyleSetting.DEFAULT -> context.file?.type?.defaultIcon
+            FileStyleSetting.VSCORD -> context.file?.type?.vscordIcon
+        }
     }
-    ImageSetting.FILE -> context.file?.type?.icon
-}
 
 private fun TimestampTargetSetting.getStart(context: ActivityContext): Instant = when (this) {
     TimestampTargetSetting.APPLICATION -> context.appStart
@@ -28,6 +34,7 @@ private fun String.fitToRange(min: Int, max: Int): String =
 class ActivityFactory(
     private val displayMode: ActivityDisplayMode,
     private val logoStyle: LogoStyleSetting,
+    private val fileStyle: FileStyleSetting,
     private val details: String,
     private val state: String,
     private val largeImage: ImageSetting?,
@@ -40,17 +47,18 @@ class ActivityFactory(
     private val timestampTarget: TimestampTargetSetting,
 ) {
     fun create(context: ActivityContext): Activity = activity {
-        details = this@ActivityFactory.details.ifEmpty { null }?.let { displayMode.format(it, context).fitToRange(2, 128) }
+        details =
+            this@ActivityFactory.details.ifEmpty { null }?.let { displayMode.format(it, context).fitToRange(2, 128) }
         state = this@ActivityFactory.state.ifEmpty { null }?.let { displayMode.format(it, context).fitToRange(2, 128) }
 
         assets {
             if (this@ActivityFactory.largeImage != null) {
-                largeImage = this@ActivityFactory.largeImage.getIcon(context, logoStyle)
+                largeImage = this@ActivityFactory.largeImage.getIcon(context, logoStyle, fileStyle)
                 largeText = displayMode.format(this@ActivityFactory.largeImageText, context).fitToRange(2, 128)
             }
 
             if (this@ActivityFactory.smallImage != null) {
-                smallImage = this@ActivityFactory.smallImage.getIcon(context, logoStyle)
+                smallImage = this@ActivityFactory.smallImage.getIcon(context, logoStyle, fileStyle)
                 smallText = displayMode.format(this@ActivityFactory.smallImageText, context).fitToRange(2, 128)
             }
         }

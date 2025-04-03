@@ -12,6 +12,7 @@ data class DiscordSettings(
     var focusTimeoutEnabled: Boolean = true,
     var focusTimeoutMinutes: Int = 20,
     var logoStyle: LogoStyleSetting = LogoStyleSetting.MODERN,
+    var fileStyle: FileStyleSetting = FileStyleSetting.DEFAULT,
     var showFullApplicationName: Boolean = false,
 
     var applicationDetails: String = "",
@@ -46,9 +47,10 @@ data class DiscordSettings(
     var fileTimestampEnabled: Boolean = true,
     var fileTimestampTarget: TimestampTargetSetting = TimestampTargetSetting.PROJECT,
 ) {
-    fun createApplicationActivityFactory(): ActivityFactory = ActivityFactory(
+    private fun createApplicationActivityFactory(): ActivityFactory = ActivityFactory(
         displayMode = ActivityDisplayMode.APPLICATION,
         logoStyle = logoStyle,
+        fileStyle = fileStyle,
         details = applicationDetails,
         state = applicationState,
         largeImage = if (applicationLargeImageEnabled) applicationLargeImage else null,
@@ -61,24 +63,27 @@ data class DiscordSettings(
         timestampTarget = TimestampTargetSetting.APPLICATION,
     )
 
-    fun createProjectActivityFactory(projectSettings: DiscordProjectSettings?): ActivityFactory = ActivityFactory(
-        displayMode = ActivityDisplayMode.PROJECT,
-        logoStyle = logoStyle,
-        details = projectDetails,
-        state = projectState,
-        largeImage = if (projectLargeImageEnabled) projectLargeImage else null,
-        largeImageText = projectLargeImageText,
-        smallImage = if (projectSmallImageEnabled) projectSmallImage else null,
-        smallImageText = projectSmallImageText,
-        buttonText = if (projectSettings?.buttonEnabled == true) projectSettings.buttonText else null,
-        buttonUrl = projectSettings?.buttonUrl ?: "",
-        timestampEnabled = projectTimestampEnabled,
-        timestampTarget = projectTimestampTarget,
-    )
+    private fun createProjectActivityFactory(projectSettings: DiscordProjectSettings?): ActivityFactory =
+        ActivityFactory(
+            displayMode = ActivityDisplayMode.PROJECT,
+            logoStyle = logoStyle,
+            fileStyle = fileStyle,
+            details = projectDetails,
+            state = projectState,
+            largeImage = if (projectLargeImageEnabled) projectLargeImage else null,
+            largeImageText = projectLargeImageText,
+            smallImage = if (projectSmallImageEnabled) projectSmallImage else null,
+            smallImageText = projectSmallImageText,
+            buttonText = if (projectSettings?.buttonEnabled == true) projectSettings.buttonText else null,
+            buttonUrl = projectSettings?.buttonUrl ?: "",
+            timestampEnabled = projectTimestampEnabled,
+            timestampTarget = projectTimestampTarget,
+        )
 
-    fun createFileActivityFactory(projectSettings: DiscordProjectSettings?): ActivityFactory = ActivityFactory(
+    private fun createFileActivityFactory(projectSettings: DiscordProjectSettings?): ActivityFactory = ActivityFactory(
         displayMode = ActivityDisplayMode.FILE,
         logoStyle = logoStyle,
+        fileStyle = fileStyle,
         details = fileDetails,
         state = fileState,
         largeImage = if (fileLargeImageEnabled) fileLargeImage else null,

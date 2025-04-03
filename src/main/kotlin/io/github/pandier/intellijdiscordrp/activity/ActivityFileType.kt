@@ -312,7 +312,8 @@ enum class ActivityFileType(
      */
     OTHER(friendlyName = "File");
 
-    val icon: String = "$FILE_ICON_REPOSITORY/$iconFile"
+    val defaultIcon: String = "$FILE_ICON_REPOSITORY/$iconFile"
+    val vscordIcon: String = "$FILE_ICON_REPOSITORY/vscord/$iconFile"
 
     override fun toString(): String =
         friendlyName
