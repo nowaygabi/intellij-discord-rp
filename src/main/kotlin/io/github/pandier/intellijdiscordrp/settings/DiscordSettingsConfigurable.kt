@@ -166,14 +166,13 @@ class DiscordSettingsConfigurable : DslConfigurable("Discord Rich Presence") {
                 .gap(RightGap.SMALL)
             contextHelp("Recently JetBrains has redesigned their IDE logos. You can switch between the old (classic) design and the new (modern) one.")
         }
-        
+
         row {
             label("File logo style:")
                 .gap(RightGap.SMALL)
             comboBox(FileStyleSetting.values().toList())
                 .bindItem(state::fileStyle.toNullableProperty())
                 .gap(RightGap.SMALL)
-            contextHelp("Recently JetBrains has redesigned their IDE logos. You can switch between the old (classic) design and the new (modern) one.")
         }
 
         row {
